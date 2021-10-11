@@ -6,7 +6,9 @@ import RickAndMorty from './components/RickAndMorty/RickAndMortyCharacters'
 import StarWars from './components/StarWars'
 import styled from 'styled-components'
 import './App.css';
-import { useEffect, useState } from 'react';
+import { Pokemon_BASE_URL, Pokemon_API_KEY } from './components/index'
+import { RickAndMorty_BASE_URL, RickAndMorty_API_KEY } from './components/index'
+import { StarWars_BASE_URL, StarWars_API_KEY } from './components/index'
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -30,7 +32,7 @@ const App = () => {
 
   const getRickAndMorty = () => {
     axios
-      .get("")
+      .get(`${RickAndMorty_BASE_URL}${RickAndMorty_API_KEY}`)
       .then(res => setMovieList(res.data))
       .catch(err => console.log(err.response));
   };
