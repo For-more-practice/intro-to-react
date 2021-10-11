@@ -19,7 +19,7 @@ export default function RickAndMortyCharacters({ info, action }) {
 
     useEffect(() => {
         const fetchCharacter = () => {
-            axios.get(`${RickAndMorty_BASE_URL}${RickAndMorty_API_KEY}`)
+            axios.get(`${RickAndMorty_BASE_URL}${RickAndMorty_API_KEY}[1,2,3,4,5,6]`)
                 .then(res => { setCharacters(res.data) })
                 .catch(err => { console.log(err) })
         };
@@ -28,8 +28,13 @@ export default function RickAndMortyCharacters({ info, action }) {
     }, [characters]);
     return (
         <div className='characters'>
-            <div>{info.name}</div>
-            <button onClick={() => action(info.id)}>See details</button>
+            <div className='character-container'>
+                <div>{info.name}</div>
+                <div className='img-container'>
+                    <img src={info.image} />
+                </div>
+                <button onClick={() => action(info.id)}>See details</button>
+            </div>
         </div>
     );
 };
