@@ -1,29 +1,14 @@
+
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import axios from "axios";
 
-const StyledDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  img {
-    width: 50%;
-  }
-  p {
-    font-size: 1.4rem;
-  }
-  button {
-    border-radius: 4px;
-  }
-`;
 export default function Details(props) {
     const { characterId, close } = props;
     const [details, setDetails] = useState([]);
 
     useEffect(() => {
         axios
-            .get(`https://rickandmortyapi.com/api/character${characterId}`)
+            .get(`https://rickandmortyapi.com/api/character/${characterId}`)
             .then((res) => {
                 setDetails(res.data);
             })
@@ -33,7 +18,7 @@ export default function Details(props) {
     }, [characterId]);
 
     return (
-        <StyledDetails>
+        <div>
             {details && (
                 <div>
                     <h3>{details.name}</h3>
@@ -49,6 +34,6 @@ export default function Details(props) {
                 </div>
             )}
             <button onClick={close}>Close</button>
-        </StyledDetails>
+        </div>
     );
 }

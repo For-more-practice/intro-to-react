@@ -1,26 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios'
+import { useHistory, useParams } from 'react-router-dom'
+import CharacterCard from "./CharacterCard";
 import styled from "styled-components";
 
-const StyledList = styled.div`
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 4px 0 4px 0;
-  button {
-    border-radius: 4px;
-  }
-`;
 
-export default function Character({ info, open }) {
+
+function Character({ info, open }) {
     return (
         <div className="character">
-            <StyledList>
+            <div>
                 <h3>{info.name}</h3>
                 <div>
-                    <button onClick={() => open = (info.id)}>See details</button>
+                    <img src={info.image} />
                 </div>
-            </StyledList>
+
+                <div>
+                    <button onCLick={() => open = (info.id)}>See Deatils</button>
+                </div>
+            </div>
         </div>
     );
 }
+
+export default Character;

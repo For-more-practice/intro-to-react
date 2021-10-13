@@ -10,3 +10,5 @@ export const RickAndMorty_API_KEY = '/api/character';
 //Star Wars URL and API key for fetching data.
 export const StarWars_BASE_URL = '';
 export const StarWars_API_KEY = '';
+
+// https://rickandmortyapi.com/api/character/?page=
