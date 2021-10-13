@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-import axios from 'axios'
-import Pokemon from './components/Pokemon/PokemonCharacters'
-import Characters from './components/RickAndMorty/Characters'
-import StarWars from './components/StarWars/StarWarsCharacters'
+import RickAndMortyHome from './components/RickAndMorty/RickMortyHome'
 import styled from 'styled-components'
 import './App.css';
 
@@ -17,16 +13,7 @@ export default function App() {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      <div className='selection-container'>
-        <Link to='/pokemon'>Pokemon</Link>
-        <Link to='Rick-and-Morty'>Rick and Morty</Link>
-        <Link to='Starwars'>StarWars</Link>
-        <Switch>
-          <Route path='/pokemon' component={Pokemon} />
-          <Route path='/Rick-and-Morty' component={Characters} />
-          <Route path='/Starwars' component={StarWars} />
-        </Switch>
-      </div>
+      <RickAndMortyHome />
     </div>
   );
 }
