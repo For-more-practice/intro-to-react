@@ -9,8 +9,13 @@
     "axios": "^0.22.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-logger": "^1.1.0",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "react-scripts": "3.4.3",
+    "react-thunk": "^1.0.0",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
     "rickmortyapi": "^1.0.0",
     "styled-component": "^2.8.0",
     "styled-components": "^5.3.1"
