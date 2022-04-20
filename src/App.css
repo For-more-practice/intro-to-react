@@ -1,8 +1,36 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: row;
 }
+
+.cover-container {
+  display: flex;
+  height: 100%;
+  width: 30%;
+}
+
 .Header {
   color: #443e3e;
   text-shadow: 1px 1px 5px #fff;
 }
+
+.Rick-Morty-cover {
+  background-image: url("./images/rm-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.StarWars-cover {
+  background-repeat: no-repeat;
+  background-image: url('./images/sw-bg.jpg');
+  background-size: cover;
+}
+
+.Pokemon-cover {
+  background-image: url("./images/pk-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* write your parent styles in here for your App.js */

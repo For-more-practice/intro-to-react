@@ -23,6 +23,7 @@ const StyledContainer = styled.div`
     justify-content: flex-end;
   }
 `;
+
 const RickMortyHome = (props) => {
     // Try to think through what state you'll need for this app before starting. Then build out
     // the state properties here.
@@ -30,6 +31,7 @@ const RickMortyHome = (props) => {
     // Fetch characters from the API in an effect hook. Remember, anytime you have a 
     // side effect in a component, you want to think about which state and/or props it should
     // sync up with, if any.
+    const { characters, isFetching, error } = props;
 
     const getCharacters = e => {
         e.preventDefault();
@@ -39,16 +41,23 @@ const RickMortyHome = (props) => {
     return (
         <>
             <h2>Welcome to Rick And Morty World!</h2>
-            {props.isFetching && <p>Fetching your Characters</p>}
-            <StyledContainer>
-                <div clasName='list'>
-                    {props.characters.map((ch) => (
-                        <CharacterCard key={ch.id} character={ch} />
-                    ))}
-                </div>
-            </StyledContainer>
-            {props.error && <p className="error">{props.error}</p>}
-            <button onClick={getCharacters}>Fetch Characters!</button>
+            {isFetching && <p>Fetching your Characters</p>}
+            {characters.map((ch) => (
+                <StyledContainer>
+
+                    <div>
+                        <h3>{ch.name}</h3>
+                        <div className='image-container'>
+                            <img src={ch.image} />
+                        </div>
+                    </div>
+                </StyledContainer>
+            ))}
+
+
+
+            {error && <p className="error">{props.error}</p>}
+
         </>
     );
 }

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import RickAndMortyHome from './components/RickAndMorty/RickMortyHome'
 
+import React from 'react';
+import './App.css';
 
 export default function App() {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -12,8 +12,24 @@ export default function App() {
 
   return (
     <div className="App">
-
-      <RickAndMortyHome />
+      <div className='cover-container'>
+        <div className='Rick-Morty-cover'>
+          <h2>Rick And Morty</h2>
+          <button>Learn More</button>
+        </div>
+      </div>
+      <div className='cover-container'>
+        <div className='Starwars-cover'>
+          <h2>Starwars</h2>
+          <button>Learn More</button>
+        </div>
+      </div>
+      <div className='cover-container'>
+        <div className='Pokemon-cover'>
+          <h2>Pokemon</h2>
+          <button>Learn More</button>
+        </div>
+      </div>
 
     </div>
   );
