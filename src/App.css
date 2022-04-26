@@ -7,6 +7,15 @@
   width: 100%;
 }
 
+.Home {
+  text-align: center;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 a {
   width: 100%;
 }
