@@ -18,7 +18,7 @@ export default function Home() {
                     </Link>
                 </div>
                 <div className='container'>
-                    <Link to='/Pokemon'>
+                    <Link to={'/Pokemon'}>
                         <div className='image-container'>
                             <div className='Pokemon-cover'>
                                 <h2>Pokemon</h2>
@@ -27,7 +27,7 @@ export default function Home() {
                     </Link>
                 </div>
                 <div className='container'>
-                    <Link to='/Starwars'>
+                    <Link to={'/Starwars'}>
                         <div className='image-container'>
                             <div className='Starwars-cover'>
                                 <h2>StarWars</h2>
