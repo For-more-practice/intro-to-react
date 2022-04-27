@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { fetchCharacters } from '../../actions';
 import { connect } from 'react-redux';
 import CharacterCard from './CharacterCard';
+import ReactPaginate from 'react-paginate';
 import styled from "styled-components";
+import './RickMortyHome.css';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -24,48 +26,69 @@ const StyledContainer = styled.div`
   }
 `;
 
-const RickMortyHome = (props) => {
-    // Try to think through what state you'll need for this app before starting. Then build out
-    // the state properties here.
+export default function RickMortyHome() {
+    const [characters, setCharacters] = useState([]);
+    const [pageCount, setPageCount] = useState();
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
 
-    // Fetch characters from the API in an effect hook. Remember, anytime you have a 
-    // side effect in a component, you want to think about which state and/or props it should
-    // sync up with, if any.
-    const { characters, isFetching, error } = props;
+    const URL = `https://rickandmortyapi.com/api/character/?page=${currentPage}`;
 
-    const getCharacters = e => {
-        e.preventDefault();
-        props.fetchCharacters();
+    const handleFetch = () => {
+        fetch(URL)
+            .then(res => res.json())
+            .then(body => {
+                setCharacters([...body.results]);
+                setPageCount(body.info.pages);
+                setIsLoaded(true);
+            })
+            .catch(error => console.error('Error', error));
+    };
+
+    const handlePageChange = (selectedObject) => {
+        setCurrentPage(toString(selectedObject.selected));
+        handleFetch();
     }
 
+    useEffect(() => {
+        handleFetch();
+    }, []);
+
     return (
-        <>
+        <div className='main-container'>
             <h2>Welcome to Rick And Morty World!</h2>
-            {isFetching && <p>Fetching your Characters</p>}
-            {characters.map((ch) => (
-                <StyledContainer>
 
-                    <div>
-                        <h3>{ch.name}</h3>
-                        <div className='image-container'>
-                            <img src={ch.image} />
+            {isLoaded ? (
+                characters.map((ch) => {
+                    return (
+                        <div className='character'>
+                            <CharacterCard character={ch} />
                         </div>
-                    </div>
-                </StyledContainer>
-            ))}
-
-
-
-            {error && <p className="error">{props.error}</p>}
-
-        </>
+                    );
+                })
+            ) : (
+                <div></div>
+            )}
+            <div className='paginate-containe'>
+                {isLoaded ? (
+                    <ReactPaginate
+                        pageCount={pageCount}
+                        pageRange={2}
+                        marginPagesDisplayed={2}
+                        onPageChange={handlePageChange}
+                        containerClassName={'ui-container'}
+                        previousLinkClassName={'page'}
+                        breakClassName={'page'}
+                        nextLinkClassName={'page'}
+                        pageClassName={'page'}
+                        disabledClassName={'disabled'}
+                        activeClassName={'active'}
+                    />
+                ) : (
+                    <duv></duv>
+                )}
+            </div>
+        </div>
     );
 }
 
-const mapStateToProps = (state) => ({
-    characters: state.characters,
-    error: state.error,
-    isFetching: state.isFetching
-});
-
-export default connect(mapStateToProps, { fetchCharacters })(RickMortyHome);

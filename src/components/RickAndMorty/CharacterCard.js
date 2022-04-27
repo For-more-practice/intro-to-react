@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
+import './RickMortyHome.css';
 
 const StyledList = styled.div`
   width: 20;

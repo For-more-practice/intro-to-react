@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import RickMortyHome from './components/RickAndMorty/RickMortyHome';
-import Home from './Home';
+import Home from './components/Home';
 import './App.css';
 
 export default function App() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RickMortyHome from './components/RickAndMorty/RickMortyHome';
-import './App.css';
+import RickMortyHome from './RickAndMorty/RickMortyHome';
+import '../App.css';
 
 
 export default function Home() {
